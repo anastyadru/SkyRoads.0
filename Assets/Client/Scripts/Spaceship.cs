@@ -25,7 +25,7 @@ public class Spaceship : MonoBehaviour
         
         if (Input.GetKey(KeyCode.D))
         {
-            if (transform.position.x < 1) // Проверила, чтобы корабль не съехал за правый край дороги
+            if (transform.position.x < 1)
             {
                 transform.position += new Vector3(0.8f, 0, 0);
                 rotationX = Mathf.Lerp(rotationX, -50f, Time.deltaTime * rotationSpeed);
@@ -33,7 +33,7 @@ public class Spaceship : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            if (transform.position.x > -14) // Проверила, чтобы корабль не съехал за левый край дороги
+            if (transform.position.x > -14)
             {
                 transform.position += new Vector3(-0.8f, 0, 0);
                 rotationX = Mathf.Lerp(rotationX, 50f, Time.deltaTime * rotationSpeed);
@@ -46,13 +46,4 @@ public class Spaceship : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, rotationX);
     }
-
-    // private void OnCollisionEnter(Collision collision)
-    // {
-    //    if (collision.gameObject.tag == "Asteroids")
-    //    {
-    //        Debug.Log("Game Over");
-    //        GameOver();
-    //    }
-    // }
 }

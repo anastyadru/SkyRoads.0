@@ -9,19 +9,19 @@ public class Timer : MonoBehaviour
     private Text Timer_Text;
     private int minutes = 0;
     private float seconds = 0f;
-    void Start()
+    
+    public void Start()
     {
         Timer_Text = GetComponent<Text>();
     }
 
-    void Update()
+    public void Update()
     {
         if (seconds > 59)
         {
             minutes++;
             seconds = 0f;
         }
-
         else
         {
             seconds += Time.deltaTime;
