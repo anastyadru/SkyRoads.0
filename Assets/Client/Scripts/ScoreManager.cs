@@ -55,7 +55,7 @@ public class ScoreManager : MonoBehaviour
 
     public void ToggleBoostedSpeed(bool isBoosted)
     {
-        this.isBoosted = isBoosted;
+        isBoosted = isBoosted;
     }
 
     private void OnDisable()
