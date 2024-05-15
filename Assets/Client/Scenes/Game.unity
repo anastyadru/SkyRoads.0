@@ -653,15 +653,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1c82197adb1f70546a8b7124aaf7fd7e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28
+      value: -21.2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1c82197adb1f70546a8b7124aaf7fd7e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.5
+      value: 14.3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1c82197adb1f70546a8b7124aaf7fd7e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 48
+      value: 83
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1c82197adb1f70546a8b7124aaf7fd7e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1346,7 +1346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &426471201
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1383,7 +1383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 0.43529412}
+  m_Color: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
