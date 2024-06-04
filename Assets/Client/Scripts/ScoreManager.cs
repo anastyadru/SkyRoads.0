@@ -13,8 +13,8 @@ public class ScoreManager : MonoBehaviour
     
     [SerializeField] private Text ScoreText;
 
-    public float score;
-    public float highscore;
+    public int score;
+    public int highscore;
     public float normalSpeed = 1f;
     public float boostedSpeed = 2f;
     public int asteroidScore = 5;
