@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Spaceship : MonoBehaviour
 {
@@ -47,5 +48,20 @@ public class Spaceship : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(0, 0, rotationX);
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Asteroid"))
+        {
+            EndGame();
+        }
+    }
+
+    void EndGame()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
