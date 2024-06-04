@@ -55,9 +55,9 @@ public class ScoreManager : MonoBehaviour
         score += asteroidScore;
     }
 
-    public void ToggleBoostedSpeed(bool isBoosted)
+    public void ToggleBoostedSpeed(bool newIsBoosted)
     {
-        isBoosted = isBoosted;
+        isBoosted = newIsBoosted;
     }
 
     private void OnDisable()
