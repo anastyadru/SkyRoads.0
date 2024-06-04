@@ -46,7 +46,7 @@ public class ScoreManager : MonoBehaviour
                 score += Mathf.RoundToInt(normalSpeed);
             }
 
-            ScoreText.text = "SCORE: " + Mathf.RoundToInt(score).ToString();
+            ScoreText.text = "SCORE: " + score.ToString();
             yield return new WaitForSeconds(1f);
         }
     }
@@ -63,9 +63,9 @@ public class ScoreManager : MonoBehaviour
 
     private void OnDisable()
     {
-        if (PlayerPrefs.GetInt("score") <= Mathf.RoundToInt(score))
+        if (PlayerPrefs.GetInt("score") <= score)
         {
-            PlayerPrefs.SetInt("score", Mathf.RoundToInt(score));
+            PlayerPrefs.SetInt("score", score);
         }
     }
 }
