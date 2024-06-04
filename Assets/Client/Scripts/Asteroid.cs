@@ -19,21 +19,20 @@ public class Asteroid : MonoBehaviour
         GetComponent<Rigidbody>().AddTorque(transform.forward * rotationSpeed);
     }
     
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Spaceship"))
-        {
-            Spaceship spaceship = other.GetComponent<Spaceship>();
-            spaceship.health -= 20;
-            if (spaceship.health <= 0)
-            {
-                spaceship.OnRelease();
-            }
-        }
-    }
+    // private void OnTriggerEnter(Collider other)
+    // {
+        // if (other.CompareTag("Spaceship"))
+        // {
+            // Spaceship spaceship = other.GetComponent<Spaceship>();
+            // spaceship.health -= 20;
+            // if (spaceship.health <= 0)
+            // {
+                // spaceship.OnRelease();
+            // }
+        // }
     
-    public void OnRelease()
-    {
-        gameObject.SetActive(false);
-    }
+    // public void OnRelease()
+    // {
+        // gameObject.SetActive(false);
+    // }
 }

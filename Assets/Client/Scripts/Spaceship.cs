@@ -51,8 +51,8 @@ public class Spaceship : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, rotationX);
     }
     
-    public void OnRelease()
-    {
+    // public void OnRelease()
+    // {
         
-    }
+    // }
 }
