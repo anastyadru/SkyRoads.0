@@ -24,12 +24,12 @@ public class ScoreManager : MonoBehaviour
     public void Start()
     {
         score = 0;
+        highscore = PlayerPrefs.GetInt("highscore", 0);
         StartCoroutine(UpdateScore());
     }
 
     public void Update()
     {
-        highscore = PlayerPrefs.GetInt("score");
         HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
     }
 
@@ -47,6 +47,13 @@ public class ScoreManager : MonoBehaviour
             }
 
             ScoreText.text = "SCORE: " + score.ToString();
+
+            if (score > highscore)
+            {
+                highscore = score;
+                HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
+            }
+            
             yield return new WaitForSeconds(1f);
         }
     }
@@ -63,9 +70,6 @@ public class ScoreManager : MonoBehaviour
 
     private void OnDisable()
     {
-        if (PlayerPrefs.GetInt("score") <= score)
-        {
-            PlayerPrefs.SetInt("score", score);
-        }
+        PlayerPrefs.SetInt("highscore", highscore);
     }
 }
