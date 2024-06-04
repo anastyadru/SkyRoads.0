@@ -29,7 +29,8 @@ public class ScoreManager : MonoBehaviour
 
     public void Update()
     {
-        HighScoreText.text = "HIGHSCORE: " + PlayerPrefs.GetInt("score").ToString();
+        highscore = PlayerPrefs.GetInt("score");
+        HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
     }
 
     IEnumerator UpdateScore()
@@ -38,11 +39,11 @@ public class ScoreManager : MonoBehaviour
         {
             if (isBoosted)
             {
-                score += boostedSpeed * 2;
+                score += Mathf.RoundToInt(boostedSpeed * 2);
             }
             else
             {
-                score += normalSpeed;
+                score += Mathf.RoundToInt(normalSpeed);
             }
 
             ScoreText.text = "SCORE: " + Mathf.RoundToInt(score).ToString();
