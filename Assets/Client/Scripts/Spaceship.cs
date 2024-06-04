@@ -13,6 +13,8 @@ public class Spaceship : MonoBehaviour
     public float boostedSpeed = 10f;
     private float moveSpeed;
     private float rotationX = 0f;
+    
+    public int health = 100;
 
     public void Update()
     {
@@ -47,5 +49,10 @@ public class Spaceship : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(0, 0, rotationX);
+    }
+    
+    public void OnRelease()
+    {
+        
     }
 }

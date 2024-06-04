@@ -42,8 +42,8 @@ public class HealthManager : MonoBehaviour
     
     private void EndGame()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Spaceship");
-        player.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        GameObject spaceship = GameObject.FindGameObjectWithTag("Spaceship");
+        spaceship.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
