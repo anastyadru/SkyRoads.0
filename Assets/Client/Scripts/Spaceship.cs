@@ -1,10 +1,7 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.using System;
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Spaceship : MonoBehaviour
 {
@@ -18,36 +15,29 @@ public class Spaceship : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            moveSpeed = boostedSpeed;
-        }
-        else if (Input.GetKeyUp(KeyCode.Space))
-        {
-            moveSpeed = normalSpeed;
-        }
-        
-        if (Input.GetKey(KeyCode.D))
-        {
-            if (transform.position.x < 1)
-            {
-                transform.position += new Vector3(0.8f, 0, 0);
-                rotationX = Mathf.Lerp(rotationX, -50f, Time.deltaTime * rotationSpeed);
-            }
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            if (transform.position.x > -14)
-            {
-                transform.position += new Vector3(-0.8f, 0, 0);
-                rotationX = Mathf.Lerp(rotationX, 50f, Time.deltaTime * rotationSpeed);
-            }
-        }
-        else
-        {
-            rotationX = Mathf.Lerp(rotationX, 0f, Time.deltaTime * rotationSpeed);
-        }
+        HandleBoostInput();
+        HandleMovementInput();
+        ApplyRotation();
+    }
 
+    private void HandleBoostInput()
+    {
+        moveSpeed = Input.GetKey(KeyCode.Space) ? boostedSpeed : normalSpeed;
+    }
+
+    private void HandleMovementInput()
+    {
+        float moveDirection = Input.GetKey(KeyCode.D) ? 0.8f : Input.GetKey(KeyCode.A) ? -0.8f : 0f;
+        if (transform.position.x + moveDirection > -14 && transform.position.x + moveDirection < 1)
+        {
+            transform.position += new Vector3(moveDirection, 0, 0);
+            rotationX = Mathf.Lerp(rotationX, moveDirection * -50f, Time.deltaTime * rotationSpeed);
+        }
+    }
+
+    private void ApplyRotation()
+    {
+        rotationX = Mathf.Lerp(rotationX, 0f, Time.deltaTime * rotationSpeed);
         transform.rotation = Quaternion.Euler(0, 0, rotationX);
     }
     
