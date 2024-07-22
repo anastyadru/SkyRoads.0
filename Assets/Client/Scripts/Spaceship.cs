@@ -53,6 +53,6 @@ public class Spaceship : MonoBehaviour
     
     // public void OnRelease()
     // {
-        
+        // gameObject.SetActive(false);
     // }
 }
