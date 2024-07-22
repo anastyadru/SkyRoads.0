@@ -1,22 +1,24 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.using System;
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class Asteroid : MonoBehaviour
 {
     public float _asteroidSpeed;
     public float rotationSpeed = 30f;
+    
+    private Rigidbody rb;
+    
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     public void Update()
     {
         _asteroidSpeed -= 0.15f;
         transform.Translate(0, 0, _asteroidSpeed);
-        GetComponent<Rigidbody>().AddTorque(transform.forward * rotationSpeed);
+        rb.AddTorque(transform.forward * rotationSpeed);
     }
     
     // private void OnTriggerEnter(Collider other)
