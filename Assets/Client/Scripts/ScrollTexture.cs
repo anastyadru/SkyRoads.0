@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ScrollTexture : MonoBehaviour
 {
-    private float _offset;
+    private float offset;
 
     private void Update()
     {
-        _offset -= 0.2f;
+        offset -= 0.2f;
         var renderer = GetComponent<Renderer>();
         renderer.material.mainTextureOffset = new Vector2(0, offset);
     }
