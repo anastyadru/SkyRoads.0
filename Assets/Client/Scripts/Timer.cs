@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    private Text Timer_Text;
+    private Text timerText;
     private int minutes = 0;
     private float seconds = 0f;
-    
+
     public void Start()
     {
-        Timer_Text = GetComponent<Text>();
+        timerText = GetComponent<Text>();
     }
 
     public void Update()
