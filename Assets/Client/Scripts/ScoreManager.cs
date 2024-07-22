@@ -1,20 +1,17 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.using System;
 
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private Text HighScoreText;
-    
     [SerializeField] private Text ScoreText;
 
     public int score;
     public int highscore;
+    
     public float normalSpeed = 1f;
     public float boostedSpeed = 2f;
     public int asteroidScore = 5;
@@ -33,19 +30,11 @@ public class ScoreManager : MonoBehaviour
         HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
     }
 
-    IEnumerator UpdateScore()
+    private IEnumerator UpdateScore()
     {
         while (true)
         {
-            if (isBoosted)
-            {
-                score += Mathf.RoundToInt(boostedSpeed * 2);
-            }
-            else
-            {
-                score += Mathf.RoundToInt(normalSpeed);
-            }
-
+            score += isBoosted ? Mathf.RoundToInt(boostedSpeed * 2) : Mathf.RoundToInt(normalSpeed);
             ScoreText.text = "SCORE: " + score.ToString();
 
             if (score > highscore)
