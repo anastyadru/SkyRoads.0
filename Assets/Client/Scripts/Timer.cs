@@ -1,8 +1,6 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.using System;
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,17 +17,13 @@ public class Timer : MonoBehaviour
 
     public void Update()
     {
-        if (seconds > 59)
+        seconds += Time.deltaTime;
+        if (seconds >= 60)
         {
             minutes++;
             seconds = 0f;
         }
-        else
-        {
-            seconds += Time.deltaTime;
-        }
 
-        int sec = (int)seconds;
-        Timer_Text.text = minutes.ToString() + " : " + sec.ToString();
+        timerText.text = $"{minutes} : {Mathf.FloorToInt(seconds)}";
     }
 }
