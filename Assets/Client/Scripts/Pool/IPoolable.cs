@@ -1,18 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+// Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
+
 using UnityEngine;
 
-public class IPoolable : MonoBehaviour
+public interface IPoolable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void OnRelease();
 }
