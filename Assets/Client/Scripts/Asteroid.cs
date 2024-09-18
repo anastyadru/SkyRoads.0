@@ -1,8 +1,9 @@
 // Copyright (c) 2012-2024 FuryLion Group. All Rights Reserved.
 
+using System;
 using UnityEngine;
 
-public class Asteroid : MonoBehaviour
+public class Asteroid : MonoBehaviour, IPoolable
 {
     public float _asteroidSpeed;
     public float rotationSpeed = 30f;
