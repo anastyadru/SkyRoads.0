@@ -6,5 +6,5 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    
+    public Asteroid PrefabAsteroid;
 }
