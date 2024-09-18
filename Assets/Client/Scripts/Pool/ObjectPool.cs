@@ -12,6 +12,6 @@ public class ObjectPool : MonoBehaviour
 
     public void Start()
     {
-        PrePool<Asteroid>(PrefabAsteroid, 10, asteroidPoolDictionary);
+        PrePool<Asteroid>(PrefabAsteroid, 15, asteroidPoolDictionary);
     }
 }
