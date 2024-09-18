@@ -17,6 +17,18 @@ public class ObjectPool : MonoBehaviour
 
     public void PrePool<T>(T prefab, int count, Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
     {
+        Type type = typeof(T);
+        if (!poolDict.ContainsKey(type))
+        {
+            Queue<IPoolable> objectPool = new Queue<IPoolable>();
+            for (int i = 0; i < count; i++)
+            {
+                T obj = GameObject.Instantiate(prefab) as T;
+                obj.gameObject.SetActive(false);
+                objectPool.Enqueue(obj);
+            }
 
+            poolDict.Add(type, objectPool);
+        }
     }
 }
