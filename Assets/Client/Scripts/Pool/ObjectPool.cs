@@ -7,4 +7,6 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     public Asteroid PrefabAsteroid;
+    
+    public Dictionary<Type, Queue<IPoolable>> asteroidPoolDictionary = new Dictionary<Type, Queue<IPoolable>>();
 }
