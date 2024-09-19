@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour, IPoolable
 {
-    public float _asteroidSpeed;
+    public float _asteroidSpeed = 5f;
     public float rotationSpeed = 30f;
     
     private Rigidbody rb;
@@ -13,6 +13,7 @@ public class Asteroid : MonoBehaviour, IPoolable
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+		rb.isKinematic = true;
     }
 
     public void Update()
