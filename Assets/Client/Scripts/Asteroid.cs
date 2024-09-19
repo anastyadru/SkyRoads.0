@@ -27,7 +27,11 @@ public class Asteroid : MonoBehaviour, IPoolable
 
 	public void OnRelease()
     {
-        
+        // Сбросьте скорость и другие параметры
+        _asteroidSpeed = 5f; // Сброс начальной скорости
+        transform.position = Vector3.zero; // Переместите астероид в начальное положение (или другое)
+        transform.rotation = Quaternion.identity; // Сбросьте вращение
+        gameObject.SetActive(false); // Деактивируйте объект
     }
     
     // private void OnTriggerEnter(Collider other)
