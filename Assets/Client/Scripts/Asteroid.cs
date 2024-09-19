@@ -18,10 +18,14 @@ public class Asteroid : MonoBehaviour, IPoolable
 
     public void Update()
     {
-        _asteroidSpeed -= 0.15f;
-        transform.Translate(0, 0, _asteroidSpeed);
-        rb.AddTorque(transform.forward * rotationSpeed);
+        if (_asteroidSpeed > 0)
+        {
+            transform.Translate(0, 0, _asteroidSpeed * Time.deltaTime);
+            rb.AddTorque(transform.forward * rotationSpeed);
+        }
     }
+
+	
     
     // private void OnTriggerEnter(Collider other)
     // {
