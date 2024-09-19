@@ -31,4 +31,16 @@ public class ObjectPool : MonoBehaviour
             poolDict.Add(type, objectPool);
         }
     }
+    
+    public T Get<T>(Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
+    {
+        Type type = typeof(T);
+        if (poolDict.ContainsKey(type) && poolDict[type].Count > 0)
+        {
+            IPoolable obj = poolDict[type].Dequeue();
+            return (T)obj;
+        }
+    
+        return null;
+    }
 }
