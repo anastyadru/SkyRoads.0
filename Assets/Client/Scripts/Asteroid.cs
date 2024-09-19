@@ -5,38 +5,25 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour, IPoolable
 {
-    public float _asteroidSpeed = 5f;
+    public float _asteroidSpeed;
     public float rotationSpeed = 30f;
     
     private Rigidbody rb;
+
+  private ObjectPool bulletPool;
     
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-		rb.isKinematic = true;
     }
 
     public void Update()
     {
-        if (_asteroidSpeed > 0)
-        {
-            transform.Translate(0, 0, _asteroidSpeed * Time.deltaTime);
-            rb.AddTorque(transform.forward * rotationSpeed);
-        }
+        _asteroidSpeed -= 0.15f;
+        transform.Translate(0, 0, _asteroidSpeed);
+        rb.AddTorque(transform.forward * rotationSpeed);
     }
-
-	public void OnRelease()
-    {
-        _asteroidSpeed = 5f;
-        transform.position = Vector3.zero;
-        transform.rotation = Quaternion.identity;
-        gameObject.SetActive(false);
-    }
-
-	private void OnDisable()
-    {
-        
-    }
+}
     
     // private void OnTriggerEnter(Collider other)
     // {
@@ -54,4 +41,3 @@ public class Asteroid : MonoBehaviour, IPoolable
     // {
         // gameObject.SetActive(false);
     // }
-}
