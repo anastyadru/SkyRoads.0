@@ -57,7 +57,7 @@ public class ObjectPool : MonoBehaviour
     
     public Asteroid GetAsteroid()
     {
-        
+        return Get<Asteroid>(asteroidPoolDictionary);
     }
 
     public void ReleaseAsteroid(Asteroid asteroid)
