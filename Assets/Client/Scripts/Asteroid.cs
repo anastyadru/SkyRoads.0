@@ -9,8 +9,6 @@ public class Asteroid : MonoBehaviour, IPoolable
     public float rotationSpeed = 30f;
     
     private Rigidbody rb;
-
-  private ObjectPool bulletPool;
     
     private void Start()
     {
@@ -22,6 +20,15 @@ public class Asteroid : MonoBehaviour, IPoolable
         _asteroidSpeed -= 0.15f;
         transform.Translate(0, 0, _asteroidSpeed);
         rb.AddTorque(transform.forward * rotationSpeed);
+    }
+
+	public void OnRelease()
+    {
+        // Логика очистки или сброса состояния астероида
+        _asteroidSpeed = 0; // Например, сброс скорости
+        transform.position = Vector3.zero; // Например, сброс позиции
+        rb.velocity = Vector3.zero; // Сброс скорости Rigidbody
+        rb.angularVelocity = Vector3.zero; // Сброс угловой скорости
     }
 }
     
