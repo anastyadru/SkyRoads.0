@@ -9,8 +9,6 @@ public class Asteroid : MonoBehaviour, IPoolable
     public float rotationSpeed = 30f;
     
     private Rigidbody rb;
-
-	private ObjectPool bulletPool;
     
     private void Start()
     {
