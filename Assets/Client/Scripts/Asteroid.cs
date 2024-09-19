@@ -25,7 +25,10 @@ public class Asteroid : MonoBehaviour, IPoolable
         }
     }
 
-	
+	public void OnRelease()
+    {
+        
+    }
     
     // private void OnTriggerEnter(Collider other)
     // {
