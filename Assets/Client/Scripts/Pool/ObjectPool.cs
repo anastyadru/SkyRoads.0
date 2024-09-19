@@ -55,5 +55,13 @@ public class ObjectPool : MonoBehaviour
         }
     }
     
-    
+    public Asteroid GetAsteroid()
+    {
+        
+    }
+
+    public void ReleaseAsteroid(Asteroid asteroid)
+    {
+        
+    }
 }
