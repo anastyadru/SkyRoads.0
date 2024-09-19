@@ -43,4 +43,9 @@ public class ObjectPool : MonoBehaviour
     
         return null;
     }
+    
+    public void Release<T>(T poolableObject, Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
+    {
+        
+    }
 }
