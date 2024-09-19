@@ -12,7 +12,7 @@ public class ObjectPool : MonoBehaviour
 
     public void Start()
     {
-        PrePool<Asteroid>(PrefabAsteroid, 15, asteroidPoolDictionary);
+        PrePool<Asteroid>(PrefabAsteroid, 4, asteroidPoolDictionary);
     }
 
     public void PrePool<T>(T prefab, int count, Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
