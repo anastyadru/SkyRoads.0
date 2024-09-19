@@ -32,6 +32,11 @@ public class Asteroid : MonoBehaviour, IPoolable
         transform.rotation = Quaternion.identity;
         gameObject.SetActive(false);
     }
+
+	private void OnDisable()
+    {
+        
+    }
     
     // private void OnTriggerEnter(Collider other)
     // {
