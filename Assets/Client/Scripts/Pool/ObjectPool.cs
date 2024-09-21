@@ -18,7 +18,7 @@ public class ObjectPool : MonoBehaviour
     public void PrePool<T>(T prefab, int count) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (!poolDict.ContainsKey(type))
+        if (!asteroidPoolDictionary.ContainsKey(type))
         {
             Queue<IPoolable> objectPool = new Queue<IPoolable>();
             for (int i = 0; i < count; i++)
