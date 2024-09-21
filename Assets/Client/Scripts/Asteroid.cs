@@ -20,8 +20,8 @@ public class Asteroid : MonoBehaviour, IPoolable
 		if (asteroidSpeed > 0)
         {
 			asteroidSpeed -= 0.15f * Time.deltaTime;
-        	transform.Translate(0, 0, _asteroidSpeed);
-        	rb.AddTorque(transform.forward * rotationSpeed);
+        	transform.Translate(0, 0, asteroidSpeed * Time.deltaTime);
+        	rb.AddTorque(transform.forward * rotationSpeed * Time.deltaTime);
 		}
     }
 
