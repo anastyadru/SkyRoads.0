@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour, IPoolable
 {
-    public float _asteroidSpeed;
+    public float asteroidSpeed;
     public float rotationSpeed = 30f;
     
     private Rigidbody rb;
