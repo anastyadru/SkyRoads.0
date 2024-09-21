@@ -28,7 +28,7 @@ public class ObjectPool : MonoBehaviour
                 objectPool.Enqueue(obj);
             }
 
-            poolDict.Add(type, objectPool);
+            asteroidPoolDictionary.Add(type, objectPool);
         }
     }
     
