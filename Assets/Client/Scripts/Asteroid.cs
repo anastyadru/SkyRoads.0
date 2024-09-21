@@ -17,9 +17,12 @@ public class Asteroid : MonoBehaviour, IPoolable
 
     public void Update()
     {
-        _asteroidSpeed -= 0.15f;
-        transform.Translate(0, 0, _asteroidSpeed);
-        rb.AddTorque(transform.forward * rotationSpeed);
+		if (asteroidSpeed > 0)
+        {
+			_asteroidSpeed -= 0.15f;
+        	transform.Translate(0, 0, _asteroidSpeed);
+        	rb.AddTorque(transform.forward * rotationSpeed);
+		}
     }
 
 	public void OnRelease()
