@@ -37,7 +37,7 @@ public class ObjectPool : MonoBehaviour
         Type type = typeof(T);
         if (asteroidPoolDictionary.ContainsKey(type) && asteroidPoolDictionary[type].Count > 0)
         {
-            IPoolable obj = poolDict[type].Dequeue();
+            IPoolable obj = asteroidPoolDictionary[type].Dequeue();
             return (T)obj;
         }
     
