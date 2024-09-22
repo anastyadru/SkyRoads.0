@@ -23,7 +23,7 @@ public class Asteroids : MonoBehaviour
         }
         if (Time.time % initialSpawnInterval < Time.deltaTime)
         {
-            AsteroidsSpace();
+            CreateAsteroid();
         }
     }
 
