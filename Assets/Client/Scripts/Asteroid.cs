@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour, IPoolable
 {
-    public float _asteroidSpeed;
+    public float asteroidSpeed;
     public float rotationSpeed = 30f;
     
     private Rigidbody rb;
@@ -17,14 +17,14 @@ public class Asteroid : MonoBehaviour, IPoolable
 
     public void Update()
     {
-		_asteroidSpeed -= 0.15f;
-        transform.Translate(0, 0, _asteroidSpeed);
+		asteroidSpeed -= 0.15f;
+        transform.Translate(0, 0, asteroidSpeed);
         rb.AddTorque(transform.forward * rotationSpeed);
     }
 
 	public void OnRelease()
     {
-        _asteroidSpeed = 0;
+        asteroidSpeed = 0;
         transform.position = Vector3.zero;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
