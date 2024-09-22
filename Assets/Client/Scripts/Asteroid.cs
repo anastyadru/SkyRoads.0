@@ -27,7 +27,7 @@ public class Asteroid : MonoBehaviour, IPoolable
 
 	public void OnRelease()
     {
-        _asteroidSpeed = 0;
+        asteroidSpeed = 0;
         transform.position = Vector3.zero;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
