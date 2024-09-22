@@ -27,7 +27,7 @@ public class Asteroids : MonoBehaviour
         }
     }
 
-    private void AsteroidsSpace()
+    private void CreateAsteroid()
     {
         GameObject newAsteroid = Instantiate(asteroid);
         newAsteroid.transform.position = new Vector3(Random.Range(-14, 1), 1, 250);
