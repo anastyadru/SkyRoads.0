@@ -17,7 +17,7 @@ public class Asteroid : MonoBehaviour, IPoolable
 
     public void Update()
     {
-		if (asteroidSpeed > 0)
+		if (_asteroidSpeed > 0)
         {
 			_asteroidSpeed -= 0.15f * Time.deltaTime;
         	transform.Translate(0, 0, _asteroidSpeed * Time.deltaTime);
