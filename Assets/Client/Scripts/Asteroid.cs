@@ -27,11 +27,10 @@ public class Asteroid : MonoBehaviour, IPoolable
 
 	public void OnRelease()
     {
-        // Логика очистки или сброса состояния астероида
-        _asteroidSpeed = 0; // Например, сброс скорости
-        transform.position = Vector3.zero; // Например, сброс позиции
-        rb.velocity = Vector3.zero; // Сброс скорости Rigidbody
-        rb.angularVelocity = Vector3.zero; // Сброс угловой скорости
+        _asteroidSpeed = 0;
+        transform.position = Vector3.zero;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 }
     
