@@ -525,7 +525,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05be0d64b6f86e4cb8f033f871579a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOn: 0
 --- !u!1 &395212875
 GameObject:
   m_ObjectHideFlags: 0
@@ -3082,7 +3081,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1533304876}
-  oldVolume: 0
 --- !u!1 &1562039880
 GameObject:
   m_ObjectHideFlags: 0
