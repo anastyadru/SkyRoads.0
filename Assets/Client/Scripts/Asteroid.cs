@@ -24,8 +24,6 @@ public class Asteroid : MonoBehaviour, IPoolable
     public void Update()
     {
 		asteroidSpeed -= 0.15f;
-        // transform.Translate(0, 0, asteroidSpeed);
-        // rb.AddTorque(transform.forward * rotationSpeed);
     }
 
 	public void OnRelease()
@@ -36,20 +34,3 @@ public class Asteroid : MonoBehaviour, IPoolable
         rb.angularVelocity = Vector3.zero;
     }
 }
-    
-    // private void OnTriggerEnter(Collider other)
-    // {
-        // if (other.CompareTag("Spaceship"))
-        // {
-            // Spaceship spaceship = other.GetComponent<Spaceship>();
-            // spaceship.health -= 20;
-            // if (spaceship.health <= 0)
-            // {
-                // spaceship.OnRelease();
-            // }
-        // }
-    
-    // public void OnRelease()
-    // {
-        // gameObject.SetActive(false);
-    // }
