@@ -18,7 +18,7 @@ public class Asteroid : MonoBehaviour, IPoolable
 	public void FixedUpdate()
     {
 		rb.MovePosition(rb.position + new Vector3(0f, 0f, asteroidSpeed);
-
+		rb.AddTorque(transform.forward * rotationSpeed);
 	}
 
     public void Update()
