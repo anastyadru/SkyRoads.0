@@ -15,11 +15,16 @@ public class Asteroid : MonoBehaviour, IPoolable
         rb = GetComponent<Rigidbody>();
     }
 
+	public void FixedUpdate()
+    {
+
+	}
+
     public void Update()
     {
 		asteroidSpeed -= 0.15f;
-        transform.Translate(0, 0, asteroidSpeed);
-        rb.AddTorque(transform.forward * rotationSpeed);
+        // transform.Translate(0, 0, asteroidSpeed);
+        // rb.AddTorque(transform.forward * rotationSpeed);
     }
 
 	public void OnRelease()
