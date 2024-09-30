@@ -23,7 +23,7 @@ public class Asteroid : MonoBehaviour, IPoolable
 
     public void Update()
     {
-		asteroidSpeed -= 0.15f;
+		asteroidSpeed -= 5f * Time.deltaTime;
     }
 
 	public void OnRelease()
