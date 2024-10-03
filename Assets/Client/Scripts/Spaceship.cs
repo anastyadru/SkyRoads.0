@@ -13,6 +13,7 @@ public class Spaceship : MonoBehaviour
     
     public int health = 100;
 
+    private Rigidbody rb;
     public void Update()
     {
         HandleBoostInput();
