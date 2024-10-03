@@ -34,10 +34,12 @@ public class Spaceship : MonoBehaviour
     private void HandleMovementInput()
     {
         float moveDirection = Input.GetKey(KeyCode.D) ? 0.8f : Input.GetKey(KeyCode.A) ? -0.8f : 0f;
-        if (transform.position.x + moveDirection > -14 && transform.position.x + moveDirection < 1)
+        Vector3 newPosition = transform.position + new Vector3(moveDirection * moveSpeed * Time.fixedDeltaTime, 0, 0);
+        
+        if (newPosition.x > -14 && newPosition.x < 1)
         {
-            transform.position += new Vector3(moveDirection, 0, 0);
-            rotationX = Mathf.Lerp(rotationX, moveDirection * -50f, Time.deltaTime * rotationSpeed);
+            rb.MovePosition(newPosition);
+            rotationX = Mathf.Lerp(rotationX, moveDirection * -50f, Time.fixedDeltaTime * rotationSpeed);
         }
     }
 
