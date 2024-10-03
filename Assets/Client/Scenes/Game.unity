@@ -1541,7 +1541,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2096,7 +2096,7 @@ MonoBehaviour:
   HighScoreText: {fileID: 823998470}
   ScoreText: {fileID: 1741641012}
   score: 0
-  highscore: 0
+  highscore: 1
   normalSpeed: 1
   boostedSpeed: 2
   asteroidScore: 5
@@ -2699,8 +2699,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -325, y: -215}
-  m_SizeDelta: {x: 180, y: 30}
+  m_AnchoredPosition: {x: -315, y: -215}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &823998470
 MonoBehaviour:
