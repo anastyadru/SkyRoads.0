@@ -14,7 +14,7 @@ public class ScrollTexture : MonoBehaviour
 
     private void Update()
     {
-        offset -= 0.2f * Time.deltaTime;
+        offset -= 8f * Time.deltaTime;
         myMaterial.mainTextureOffset = new Vector2(0, offset);
     }
 }
