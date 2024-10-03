@@ -12,6 +12,13 @@ public class Spaceship : MonoBehaviour
     private float rotationX = 0f;
     
     public int health = 100;
+    
+    private Transform myTransform;
+    
+    private void Awake()
+    {
+        myTransform = transform;
+    }
 
     public void FixedUpdate()
     {
@@ -28,9 +35,9 @@ public class Spaceship : MonoBehaviour
     private void HandleMovementInput()
     {
         float moveDirection = Input.GetKey(KeyCode.D) ? 0.8f : Input.GetKey(KeyCode.A) ? -0.8f : 0f;
-        if (transform.position.x + moveDirection > -14 && transform.position.x + moveDirection < 1)
+        if (myTransform.position.x + moveDirection > -14 && myTransform.position.x + moveDirection < 1)
         {
-            transform.position += new Vector3(moveDirection, 0, 0);
+            myTransform.position += new Vector3(moveDirection, 0, 0);
             rotationX = Mathf.Lerp(rotationX, moveDirection * -50f, Time.deltaTime * rotationSpeed);
         }
     }
@@ -38,7 +45,7 @@ public class Spaceship : MonoBehaviour
     private void ApplyRotation()
     {
         rotationX = Mathf.Lerp(rotationX, 0f, Time.deltaTime * rotationSpeed);
-        transform.rotation = Quaternion.Euler(0, 0, rotationX);
+        myTransform.rotation = Quaternion.Euler(0, 0, rotationX);
     }
     
     public void OnRelease()
