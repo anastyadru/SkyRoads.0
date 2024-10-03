@@ -11,7 +11,7 @@ public class ScoreManager : MonoBehaviour
 
     public int score;
     public int highscore;
-    
+
     public float normalSpeed = 1f;
     public float boostedSpeed = 2f;
     public int asteroidScore = 5;
