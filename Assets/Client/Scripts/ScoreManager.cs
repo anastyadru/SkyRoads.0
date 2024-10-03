@@ -17,12 +17,15 @@ public class ScoreManager : MonoBehaviour
     public int asteroidScore = 5;
 
     private bool isBoosted = false;
+    private int prevHighscore;
 
     public void Start()
     {
         score = 0;
         highscore = PlayerPrefs.GetInt("highscore", 0);
+        prevHighscore = highscore;
         StartCoroutine(UpdateScore());
+        UpdateHighScoreText();
     }
 
     public void Update()
