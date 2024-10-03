@@ -30,7 +30,7 @@ public class ScoreManager : MonoBehaviour
 
     public void Update()
     {
-        HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
+        
     }
 
     private IEnumerator UpdateScore()
@@ -43,13 +43,19 @@ public class ScoreManager : MonoBehaviour
             if (score > highscore)
             {
                 highscore = score;
-                HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
+                UpdateHighScoreText();
             }
             
             yield return new WaitForSeconds(1f);
         }
     }
 
+    private void UpdateHighScoreText()
+    {
+        HighScoreText.text = "HIGHSCORE: " + highscore.ToString();
+        prevHighscore = highscore;
+    }
+    
     public void AddAsteroidScore()
     {
         score += asteroidScore;
