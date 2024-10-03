@@ -14,7 +14,12 @@ public class Spaceship : MonoBehaviour
     public int health = 100;
 
     private Rigidbody rb;
-    public void Update()
+    
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+    public void FixedUpdate()
     {
         HandleBoostInput();
         HandleMovementInput();
