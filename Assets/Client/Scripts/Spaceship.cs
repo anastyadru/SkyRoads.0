@@ -13,7 +13,7 @@ public class Spaceship : MonoBehaviour
     
     public int health = 100;
 
-    public void Update()
+    public void FixedUpdate()
     {
         HandleBoostInput();
         HandleMovementInput();
