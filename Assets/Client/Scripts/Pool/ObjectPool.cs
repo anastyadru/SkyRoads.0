@@ -9,10 +9,12 @@ public class ObjectPool : MonoBehaviour
     public Asteroid PrefabAsteroid;
     
     private Dictionary<Type, Queue<IPoolable>> asteroidPoolDictionary = new Dictionary<Type, Queue<IPoolable>>();
+    private int initialPoolSize = 10;
+    private int maxPoolSize = 30;
 
     public void Start()
     {
-        PrePool(PrefabAsteroid, 10);
+        PrePool(PrefabAsteroid, initialPoolSize);
     }
 
     public void PrePool<T>(T prefab, int count) where T : MonoBehaviour, IPoolable
@@ -35,10 +37,23 @@ public class ObjectPool : MonoBehaviour
     public T Get<T>() where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (asteroidPoolDictionary.ContainsKey(type) && asteroidPoolDictionary[type].Count > 0)
+        if (asteroidPoolDictionary.ContainsKey(type))
         {
-            IPoolable obj = asteroidPoolDictionary[type].Dequeue();
-            return (T)obj;
+            Queue<IPoolable> objectPool = asteroidPoolDictionary[type];
+            if (objectPool.Count > 0)
+            {
+                IPoolable obj = objectPool.Dequeue();
+                return (T)obj;
+            }
+            else
+            {
+                // Если объектов не осталось, создаем новые до максимального размера пула
+                if (objectPool.Count + initialPoolSize <= maxPoolSize)
+                {
+                    PrePool(Activator.CreateInstance<T>(), initialPoolSize);
+                    return Get<T>(); // Попробуем снова получить объект после создания новых
+                }
+            }
         }
     
         return null;
