@@ -15,9 +15,9 @@ public class ObjectPool : MonoBehaviour
     public int maxPoolSize = 30;
     public int increaseAmount = 10;
 
-    public void Start()
+    void Start()
     {
-        PrePool(PrefabAsteroid, 10);
+        PrePool(PrefabAsteroid, initialPoolSize);
     }
 
     public void PrePool<T>(T prefab, int count) where T : MonoBehaviour, IPoolable
@@ -34,18 +34,33 @@ public class ObjectPool : MonoBehaviour
             }
 
             asteroidPoolDictionary.Add(type, objectPool);
+            poolSizes.Add(type, count);
         }
     }
     
     public T Get<T>() where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (asteroidPoolDictionary.ContainsKey(type) && asteroidPoolDictionary[type].Count > 0)
+        
+        if (asteroidPoolDictionary.ContainsKey(type))
         {
-            IPoolable obj = asteroidPoolDictionary[type].Dequeue();
-            return (T)obj;
+            if (asteroidPoolDictionary[type].Count == 0)
+            {
+                if (poolSizes[type] < maxPoolSize)
+                {
+                    int toAdd = Math.Min(maxPoolSize - poolSizes[type], increaseAmount);
+                    PrePool(Instantiate(PrefabAsteroid), toAdd);
+                }
+            }
+
+            if (asteroidPoolDictionary[type].Count > 0)
+            {
+                IPoolable obj = asteroidPoolDictionary[type].Dequeue();
+                obj.gameObject.SetActive(true);
+                return (T)obj;
+            }
         }
-    
+
         return null;
     }
     
