@@ -72,6 +72,7 @@ public class ObjectPool : MonoBehaviour
             Queue<IPoolable> objectPool = asteroidPoolDictionary[type];
             objectPool.Enqueue(poolableObject);
             poolableObject.OnRelease();
+            poolableObject.gameObject.SetActive(false);
         }
     }
     
