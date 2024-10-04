@@ -9,15 +9,10 @@ public class ObjectPool : MonoBehaviour
     public Asteroid PrefabAsteroid;
     
     private Dictionary<Type, Queue<IPoolable>> asteroidPoolDictionary = new Dictionary<Type, Queue<IPoolable>>();
-    private Dictionary<Type, int> poolSizes = new Dictionary<Type, int>();
 
-    public int initialPoolSize = 10;
-    public int maxPoolSize = 30;
-    public int increaseAmount = 10;
-
-    void Start()
+    public void Start()
     {
-        PrePool(PrefabAsteroid, initialPoolSize);
+        PrePool(PrefabAsteroid, 10);
     }
 
     public void PrePool<T>(T prefab, int count) where T : MonoBehaviour, IPoolable
@@ -34,33 +29,18 @@ public class ObjectPool : MonoBehaviour
             }
 
             asteroidPoolDictionary.Add(type, objectPool);
-            poolSizes.Add(type, count);
         }
     }
     
     public T Get<T>() where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        
-        if (asteroidPoolDictionary.ContainsKey(type))
+        if (asteroidPoolDictionary.ContainsKey(type) && asteroidPoolDictionary[type].Count > 0)
         {
-            if (asteroidPoolDictionary[type].Count == 0)
-            {
-                if (poolSizes[type] < maxPoolSize)
-                {
-                    int toAdd = Math.Min(maxPoolSize - poolSizes[type], increaseAmount);
-                    PrePool(Instantiate(PrefabAsteroid), toAdd);
-                }
-            }
-
-            if (asteroidPoolDictionary[type].Count > 0)
-            {
-                IPoolable obj = asteroidPoolDictionary[type].Dequeue();
-                obj.gameObject.SetActive(true);
-                return (T)obj;
-            }
+            IPoolable obj = asteroidPoolDictionary[type].Dequeue();
+            return (T)obj;
         }
-
+    
         return null;
     }
     
@@ -72,7 +52,6 @@ public class ObjectPool : MonoBehaviour
             Queue<IPoolable> objectPool = asteroidPoolDictionary[type];
             objectPool.Enqueue(poolableObject);
             poolableObject.OnRelease();
-            poolableObject.gameObject.SetActive(false);
         }
     }
     
