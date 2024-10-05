@@ -35,15 +35,32 @@ public class ObjectPool : MonoBehaviour
         }
     }
     
-    public T Get<T>() where T : MonoBehaviour, IPoolable
+    public T Get<T>(Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (asteroidPoolDictionary.ContainsKey(type) && asteroidPoolDictionary[type].Count > 0)
+        if (poolDict.ContainsKey(type))
         {
-            IPoolable obj = asteroidPoolDictionary[type].Dequeue();
-            return (T)obj;
+            if (poolDict[type].Count == 0)
+            {
+                if (poolDict[type].Count < maxPoolSize)
+                {
+                    T prefab = null;
+                    if (type == typeof(PrefabAsteroid)) prefab = prefabAsteroid as T;
+
+                    if (prefab != null)
+                    {
+                        PrePool(prefab, 1, poolDict);
+                    }
+                }
+            }
+
+            if (poolDict[type].Count > 0)
+            {
+                IPoolable obj = poolDict[type].Dequeue();
+                return (T)obj;
+            }
         }
-    
+
         return null;
     }
     
