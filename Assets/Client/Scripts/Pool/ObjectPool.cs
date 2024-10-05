@@ -9,19 +9,16 @@ public class ObjectPool : MonoBehaviour
     public Asteroid PrefabAsteroid;
     
     private Dictionary<Type, Queue<IPoolable>> asteroidPoolDictionary = new Dictionary<Type, Queue<IPoolable>>();
-    
-    public int initialPoolSize = 10;
-    public int maxPoolSize = 30;
 
     public void Start()
     {
-        PrePool<PrefabAsteroid>(prefabAsteroid, initialPoolSize, asteroidPoolDictionary);
+        PrePool(PrefabAsteroid, 10);
     }
 
-    public void PrePool<T>(T prefab, int count, Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
+    public void PrePool<T>(T prefab, int count) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (!poolDict.ContainsKey(type))
+        if (!asteroidPoolDictionary.ContainsKey(type))
         {
             Queue<IPoolable> objectPool = new Queue<IPoolable>();
             for (int i = 0; i < count; i++)
@@ -31,36 +28,19 @@ public class ObjectPool : MonoBehaviour
                 objectPool.Enqueue(obj);
             }
 
-            poolDict.Add(type, objectPool);
+            asteroidPoolDictionary.Add(type, objectPool);
         }
     }
     
-    public T Get<T>(Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
+    public T Get<T>() where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (poolDict.ContainsKey(type))
+        if (asteroidPoolDictionary.ContainsKey(type) && asteroidPoolDictionary[type].Count > 0)
         {
-            if (poolDict[type].Count == 0)
-            {
-                if (poolDict[type].Count < maxPoolSize)
-                {
-                    T prefab = null;
-                    if (type == typeof(PrefabAsteroid)) prefab = prefabAsteroid as T;
-
-                    if (prefab != null)
-                    {
-                        PrePool(prefab, 1, poolDict);
-                    }
-                }
-            }
-
-            if (poolDict[type].Count > 0)
-            {
-                IPoolable obj = poolDict[type].Dequeue();
-                return (T)obj;
-            }
+            IPoolable obj = asteroidPoolDictionary[type].Dequeue();
+            return (T)obj;
         }
-
+    
         return null;
     }
     
