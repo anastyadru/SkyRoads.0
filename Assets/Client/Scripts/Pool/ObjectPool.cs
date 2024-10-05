@@ -9,10 +9,13 @@ public class ObjectPool : MonoBehaviour
     public Asteroid PrefabAsteroid;
     
     private Dictionary<Type, Queue<IPoolable>> asteroidPoolDictionary = new Dictionary<Type, Queue<IPoolable>>();
+    
+    public int initialPoolSize = 10;
+    public int maxPoolSize = 30;
 
     public void Start()
     {
-        PrePool(PrefabAsteroid, 10);
+        PrePool<PrefabAsteroid>(prefabAsteroid, initialPoolSize, asteroidPoolDictionary);
     }
 
     public void PrePool<T>(T prefab, int count) where T : MonoBehaviour, IPoolable
