@@ -18,10 +18,10 @@ public class ObjectPool : MonoBehaviour
         PrePool<PrefabAsteroid>(prefabAsteroid, initialPoolSize, asteroidPoolDictionary);
     }
 
-    public void PrePool<T>(T prefab, int count) where T : MonoBehaviour, IPoolable
+    public void PrePool<T>(T prefab, int count, Dictionary<Type, Queue<IPoolable>> poolDict) where T : MonoBehaviour, IPoolable
     {
         Type type = typeof(T);
-        if (!asteroidPoolDictionary.ContainsKey(type))
+        if (!poolDict.ContainsKey(type))
         {
             Queue<IPoolable> objectPool = new Queue<IPoolable>();
             for (int i = 0; i < count; i++)
@@ -31,7 +31,7 @@ public class ObjectPool : MonoBehaviour
                 objectPool.Enqueue(obj);
             }
 
-            asteroidPoolDictionary.Add(type, objectPool);
+            poolDict.Add(type, objectPool);
         }
     }
     
