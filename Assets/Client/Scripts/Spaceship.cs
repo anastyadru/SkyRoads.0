@@ -27,6 +27,8 @@ public class Spaceship : MonoBehaviour
 
     private void HandleMovementInput()
     {
+        moveSpeed = normalSpeed;
+        
         float moveDirection = Input.GetKey(KeyCode.D) ? 0.8f : Input.GetKey(KeyCode.A) ? -0.8f : 0f;
         if (myTransform.position.x + moveDirection > -14 && myTransform.position.x + moveDirection < 1)
         {
