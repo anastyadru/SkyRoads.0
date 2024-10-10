@@ -21,7 +21,6 @@ public class Spaceship : MonoBehaviour
 
     public void FixedUpdate()
     {
-        HandleBoostInput();
         HandleMovementInput();
         ApplyRotation();
     }
