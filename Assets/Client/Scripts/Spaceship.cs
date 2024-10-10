@@ -25,11 +25,6 @@ public class Spaceship : MonoBehaviour
         ApplyRotation();
     }
 
-    private void HandleBoostInput()
-    {
-        moveSpeed = Input.GetKey(KeyCode.Space) ? boostedSpeed : normalSpeed;
-    }
-
     private void HandleMovementInput()
     {
         float moveDirection = Input.GetKey(KeyCode.D) ? 0.8f : Input.GetKey(KeyCode.A) ? -0.8f : 0f;
