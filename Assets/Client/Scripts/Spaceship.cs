@@ -7,7 +7,6 @@ public class Spaceship : MonoBehaviour
 {
     public float rotationSpeed = 5f;
     public float normalSpeed = 3f;
-    public float boostedSpeed = 10f;
     private float moveSpeed;
     private float rotationX = 0f;
     
